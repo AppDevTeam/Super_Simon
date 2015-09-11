@@ -7,4 +7,4 @@ The goal is to create a simple Simon-type game with input from arcade buttons.
 
 Plans:
 ![workflow](images/flow.png)
-![classes](images/flow.png)
+![classes](images/classes.png)
