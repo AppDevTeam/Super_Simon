@@ -10,7 +10,7 @@ import java.io.*;
 public class ScoreKeeper {
 
     // Instance Variables
-    private 
+    private int score;  // holds the current score? -Amanda
 
     // Constructor
     public ScoreKeeper() {
@@ -19,7 +19,8 @@ public class ScoreKeeper {
     }
 
     private void loadScores() {
-        
+        // shouldn't this put the scores in order from highest to lowest 
+        // or call a method that does that? -Amanda
     }
 
 }
