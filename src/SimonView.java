@@ -31,7 +31,8 @@ public class SimonView {
         simon.prepareSimon(round);
 
         // Display the colors
-
+        //Just a guess from Hilary!
+        simon.getColorPattern()
 
         // Expect user input
 
