@@ -31,8 +31,11 @@ public class SimonView {
         simon.prepareSimon(round);
 
         // Display the colors
-        //Just a guess from Hilary!
-        simon.getColorPattern()
+        //Just a guess from Hilary!   
+            // Maybe this? We probably don't want to display the colors in this method 
+            // and calling the getColorPattern() method just returns the array of 
+            // colors without doing anything with it. - Zina
+        displayColorPattern(simon.getColorPattern());
 
         // Expect user input
 
@@ -41,8 +44,14 @@ public class SimonView {
 
     }
 
+    private void displayColorPattern(ArrayList pattern) {
+
+    }
+
     private void listenForInput() {
 
     }
+
+
 
 }
