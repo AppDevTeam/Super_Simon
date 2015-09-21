@@ -29,9 +29,8 @@ public class SimonController {
         simon.prepareSimon(round);
 
         // Display the colors
-        simon.getColorPattern(); //Added by Hilary
-        //Do we connect this code to the arduino code here? - Hilary
-        
+
+
         // Expect user input
 
 
