@@ -34,11 +34,15 @@ public class SimonController {
         // Display the colors
         displayColors();
 
-        // Expect user input
-
-            // Turn Timer
-                // Listen for button press
-
+        // start loop
+            // start timer
+        
+            //listen for user input
+                // does user input = colorpattern.get(i)
+                    //yes ? i++
+                    //no addNewScore(String name, int score) 
+                        //   display highscore??
+                
 
         round++;
 
