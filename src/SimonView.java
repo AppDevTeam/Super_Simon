@@ -13,9 +13,8 @@ import javax.imageio.*;
  *  @author Zina Schroeder
  *  @version 1.0
  */
-public class SimonView {
+public class SimonView extends Frame {
 
-    private int[][] screenChoices;
     private JButton[][] board;
     private JPanel panel;
 
@@ -24,11 +23,11 @@ public class SimonView {
         panel = new JPanel(new GridLayout(1, 1));
         board = new JButton[1][1];
 
-        drawScreen(board);
+        drawScreen();
 
     }
 
-    private void drawScreen(JButton[][] board)  {
+    private void drawScreen()  {
 
         board[1][1] = new JButton();
         board[1][1].setOpaque(true);
@@ -51,7 +50,5 @@ public class SimonView {
             case 4: board[1][1].setBackground(Color.yellow);
                     break;
         }
-
-
     }
 }
