@@ -45,7 +45,7 @@ public class ScoreKeeper {
     /**
      *  Writes dat file to store scores
      */
-    public void outputScores() {
+    private void outputScores() {
         
         try (ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream(SCORES_FILE))) { 
 
@@ -107,7 +107,7 @@ public class ScoreKeeper {
         for (int i = 0; i < scores.size(); i++) {
             int listIndex = i + 1;
 
-            output += listIndex + ". " + scores.get(i).getPlayerScore() + " - " + scores.get(i).getPlayerName() + "\n";
+            output += listIndex + ". " + scores.get(i) + "\n";
         }
 
         return output;
