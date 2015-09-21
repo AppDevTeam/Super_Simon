@@ -15,7 +15,7 @@ public class Simon {
     // Constructor
     public Simon() {
 
-        turnLength = 2.1; // The time per color press starts at about 2 seconds
+        turnLength = 2100; // in milliseconds
         colorPattern = new ArrayList<int>();
     }
 
@@ -24,10 +24,10 @@ public class Simon {
      *
      *  @param round    The current player round
      */
-    public void prepareSimonSays(int round) {
+    public void prepareSimonSays() {
 
         turnLength = turnLength * 0.95; // Make each turn slightly faster
-        colorPattern[round] = generateRandomColor(); // Add a new color to the pattern
+        colorPattern.add(generateRandomColor()); // Add a new color to the pattern
     }
 
     /**
@@ -38,15 +38,15 @@ public class Simon {
      */
     private int generateRandomColor(int round) {
 
-        int limit = 5;
+        int limit = 4;
 
         if (round < 10) {
-            limit = 3;
+            limit = 2;
         } else if (round < 30) {
-            limit = 4;
+            limit = 3;
         }
 
-        return (int)(Math.random() * limit + 1);
+        return (int)(Math.random() * limit);
     }
 
     /**
