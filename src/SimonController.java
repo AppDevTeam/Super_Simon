@@ -29,7 +29,7 @@ public class SimonController {
 
 
         // Prepare for the turn by choosing a color, etc. 
-        simon.prepareSimon();
+        simon.prepareSimon(round);
 
         // Display the colors
         displayColors();

@@ -10,13 +10,13 @@ public class Simon {
 
     // Instance Variables
     private double turnLength;
-    private ArrayList<int> colorPattern;
+    private ArrayList<Integer> colorPattern;
 
     // Constructor
     public Simon() {
 
         turnLength = 2100; // in milliseconds
-        colorPattern = new ArrayList<int>();
+        colorPattern = new ArrayList<Integer>();
     }
 
     /**
@@ -24,10 +24,10 @@ public class Simon {
      *
      *  @param round    The current player round
      */
-    public void prepareSimonSays() {
+    public void prepareSimon(int round) {
 
         turnLength = turnLength * 0.95; // Make each turn slightly faster
-        colorPattern.add(generateRandomColor()); // Add a new color to the pattern
+        colorPattern.add(generateRandomColor(round)); // Add a new color to the pattern
     }
 
     /**
@@ -54,7 +54,7 @@ public class Simon {
      *
      *  @return   the array of colors
      */
-    public ArrayList<int> getColorPattern() {
+    public ArrayList<Integer> getColorPattern() {
         return colorPattern;
     }
 
