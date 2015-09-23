@@ -1,65 +1,47 @@
-//import java.awt.Component;
-import java.awt.event.WindowEvent;
-import java.lang.Override;
-import java.util.*;
+
 import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
+import javax.swing.*;
+
 
 /**
- *  Display for the Simon game
- *
- * This class is going to accept values to indicate which colors to display
- * 
- *  @author Jacob Kocina
- *  @version 1.0
+ * Created by Jacob on 9/22/2015.
  */
-public class SimonView extends Frame implements WindowListener {
+public class SimonView extends JPanel {
 
-    private Panel panel;
-    private Label label;
-    private Button rsetButton;
+    public Graphics2D showSimonsColor;
 
-    /**
-     * This method begins the process of creating a display by giving variable access to the necessary graphics methods
-     */
     public void displayScreen() {
 
-        // A panel that will hold displayed data
-        panel = new Panel();
+        JFrame frame = new JFrame("Simon Says");
+        JLabel mitaLabel = new JLabel("MITA App Dev Says follow the colors:");
 
-        // A centered label to be put into the panel
-        label = new Label("MITA-AppDev says: Follow These Colors", Label.CENTER);
+        setLayout(new BorderLayout());
+        frame.add(mitaLabel, BorderLayout.PAGE_START);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(new SimonView());
+        frame.setSize(700, 700);
+        frame.setVisible(true);
 
-        //A button to reset things maybe
-        rsetButton = new Button("Reset");
-        drawScreen();
-
-    }
-
-    /**
-     * This method sets initializes a display to switch between colors
-     */
-    private void drawScreen()  {
-
-        //sets layout and size of panel
-        setLayout(new BorderLayout(20,20));
-        setSize(500, 500);
-
-        //adds the label to the panel
-        add(label, BorderLayout.NORTH);
-
-        //adds the reset button to the panel
-        add(rsetButton, BorderLayout.SOUTH);
-
-        setTitle("MITA-AppDev Presents Simon Says");
-        //sets the panel and everything inside visible
-        setVisible(true);
-
-        //Sets up for x being clicked to System.exit(0)
-        addWindowListener(this);
+        //just to test different Colors
+        SimonView sv = new SimonView();
+        for (int i = 0 ; i < 5 ; i ++) {
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
+            sv.displayColors(i);
+        }
 
     }
+
+    @Override
+    public void paint(Graphics g)  {
+        showSimonsColor = (Graphics2D) g;
+        showSimonsColor.setColor(Color.BLACK);
+        showSimonsColor.fillOval(75, 75, 500, 500);
+    }
+
 
     /**
      * This method accepts takes a number between 0 and 1 and sets the display to the corresponding color
@@ -70,45 +52,27 @@ public class SimonView extends Frame implements WindowListener {
      *              3 = green
      *              4 = yellow
      */
-    private void displayColors(int color)  {
+    public void displayColors(int color)  {
 
         switch (color)  {
 
-            case 0:
-                    break;
-            case 1:
-                    break;
-            case 2:
-                    break;
-            case 3:
-                    break;
-            case 4:
-                    break;
+            case 0: showSimonsColor.setColor(Color.WHITE);
+                break;
+            case 1: showSimonsColor.setColor(Color.RED);
+                break;
+            case 2: showSimonsColor.setColor(Color.BLUE);
+                break;
+            case 3: showSimonsColor.setColor(Color.GREEN);
+                break;
+            case 4: showSimonsColor.setColor(Color.YELLOW);
+                break;
         }
     }
 
-    @Override
-    public void windowClosing(WindowEvent e)  {
-        System.exit(0);
-    }
-
-    //These things need to be here for the window listener
-    @Override
-    public void windowOpened(WindowEvent e) { }
-    @Override
-    public void windowClosed(WindowEvent e) { }
-    @Override
-    public void windowIconified(WindowEvent e) { }
-    @Override
-    public void windowDeiconified(WindowEvent e) { }
-    @Override
-    public void windowActivated(WindowEvent e) { }
-    @Override
-    public void windowDeactivated(WindowEvent e) { }
-
-    public static void main(String[] arguements) {
+    public static void main(String[] arguments) {
 
         SimonView sv = new SimonView();
         sv.displayScreen();
     }
 }
+
