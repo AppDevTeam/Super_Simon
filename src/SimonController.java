@@ -12,21 +12,23 @@ public class SimonController {
 
     // Instance Variables
     private Simon simon;
-    private SimonView view;
+    //private SimonView view;
+    private ButtonController buttons;
     private Player audioPlayer;
     private int round;
+
 
     // Constructor
     public SimonController() {
 
-        simon  = new Simon();
-        view   = new SimonView();
+        simon       = new Simon();
+        buttons     = new ButtonController();
+        // view        = new SimonView();
         audioPlayer = new Player();
-        round  = 0;
+        round       = 0;
     }
 
-    public runSimon() {
-
+    public void runSimon() {
 
         // Prepare for the turn by choosing a color, etc. 
         simon.prepareSimon(round);
@@ -55,40 +57,47 @@ public class SimonController {
     private void displayColors() {
 
         for (int color : simon.getColorPattern()) {
-            view.showColor(color);
+            //view.showColor(color);
 
             // Light up correct LED
+            buttons.lightLED(color, simon.getTurnLength());
 
             // Play sound
             playSound(color);
 
             // Pause while displaying colors
-            Thread.sleep(simon.getTurnLength());
+            //Thread.sleep(simon.getTurnLength());
+            try {
+                Thread.sleep(simon.getTurnLength());                 //1000 milliseconds is one second.
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
 
             // Reset color display
+            //view.reset();
         }
     }
 
-    private void playSound(int color) {
+    private void playSound(int tone) {
         
-        switch(color) {
+        switch(tone) {
             case 0:
-                audioPlayer.play("B");
+                audioPlayer.play("C ");
                 break;
             case 1:
-                audioPlayer.play("C");
+                audioPlayer.play("D ");
                 break;
             case 2:
-                audioPlayer.play("D");
+                audioPlayer.play("E ");
                 break;
             case 3:
-                audioPlayer.play("E");
+                audioPlayer.play("F ");
                 break;
             case 4:
-                audioPlayer.play("F");
+                audioPlayer.play("G ");
                 break;
             default:
-                audioPlayer.play("G");
+                audioPlayer.play("A ");
                 break;
         }
     }

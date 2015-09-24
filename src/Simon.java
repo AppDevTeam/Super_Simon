@@ -9,7 +9,7 @@ import java.util.*;
 public class Simon {
 
     // Instance Variables
-    private double turnLength;
+    private int turnLength;
     private ArrayList<Integer> colorPattern;
 
     // Constructor
@@ -26,7 +26,7 @@ public class Simon {
      */
     public void prepareSimon(int round) {
 
-        turnLength = turnLength * 0.95; // Make each turn slightly faster
+        turnLength = (int)(turnLength * 0.95); // Make each turn slightly faster
         colorPattern.add(generateRandomColor(round)); // Add a new color to the pattern
     }
 
@@ -38,15 +38,20 @@ public class Simon {
      */
     private int generateRandomColor(int round) {
 
-        int limit = 4;
+        int limit = 5;
+        int color;
 
-        if (round < 10) {
-            limit = 2;
-        } else if (round < 30) {
-            limit = 3;
-        }
+        // if (round < 10) {
+        //     limit = 2;
 
-        return (int)(Math.random() * limit);
+        // } else if (round < 20) {
+        //     limit = 3;
+        // }
+
+        color = (int)(Math.random() * limit);
+        System.out.println("Choosing " + color + "\n");
+
+        return color;
     }
 
     /**
@@ -61,9 +66,9 @@ public class Simon {
     /**
      *  Gets the current length of time for a turn. 
      *
-     *  @return   time of turn in seconds
+     *  @return   time of turn in milliseconds
      */
-    public double getTurnLength() {
+    public int getTurnLength() {
         return turnLength;
     }
 
