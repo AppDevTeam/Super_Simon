@@ -12,18 +12,17 @@ public class SimonController {
 
     // Instance Variables
     private Simon simon;
-    //private SimonView view;
+    private SimonView view;
     private ButtonController buttons;
     private Player audioPlayer;
     private int round;
-
 
     // Constructor
     public SimonController() {
 
         simon       = new Simon();
         buttons     = new ButtonController();
-        // view        = new SimonView();
+        view        = new SimonView(this);
         audioPlayer = new Player();
         round       = 0;
     }
@@ -47,7 +46,6 @@ public class SimonController {
                 
 
         round++;
-
     }
 
     private void listenForInput() {
@@ -57,7 +55,7 @@ public class SimonController {
     private void displayColors() {
 
         for (int color : simon.getColorPattern()) {
-            //view.showColor(color);
+            view.displayColor(color);
 
             // Light up correct LED
             buttons.lightLED(color, simon.getTurnLength());
@@ -66,15 +64,21 @@ public class SimonController {
             playSound(color);
 
             // Pause while displaying colors
-            //Thread.sleep(simon.getTurnLength());
             try {
-                Thread.sleep(simon.getTurnLength());                 //1000 milliseconds is one second.
+                Thread.sleep(simon.getTurnLength());        
             } catch (InterruptedException ex) {
                 Thread.currentThread().interrupt();
             }
 
             // Reset color display
-            //view.reset();
+            view.reset();
+
+            // Pause again
+            try {
+                Thread.sleep(100);        
+            } catch (InterruptedException ex) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 

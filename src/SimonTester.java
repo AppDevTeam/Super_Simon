@@ -1,4 +1,4 @@
-import org.jfugue.player.Player;
+//import org.jfugue.player.Player;
 
 /**
  *  Tests pieces of the Simon Controller, ButtonController 
@@ -12,11 +12,11 @@ public class SimonTester {
     public static void main(String[] args) {
 
         SimonController game = new SimonController();
-        Player audioPlayer = new Player();
+        //Player audioPlayer = new Player();
 
-        for (int i = 0; i < 20; i++) {
-            game.runSimon();
-            System.out.println("Fake turn #" + i + "complete!\n");
-        }
+        // for (int i = 0; i < 20; i++) {
+        //     game.runSimon();
+        //     System.out.println("Fake turn #" + i + "complete!\n");
+        // }
     }
 }
